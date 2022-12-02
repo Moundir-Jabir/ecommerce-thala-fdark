@@ -4,17 +4,10 @@ const app = express()
 //const expressValidator = require('express-validator')
 //const cookieParser = require('cookie-parser')
 //const cors = require('cors')
-const mongoose = require('mongoose')
 
 //Routers
 //const authRouter = require('./routes/auth')
 //const userRouter = require('./routes/user')
-
-mongoose.connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => console.log('database connected'))
-  .catch((e) => console.log('not connect to database', e))
 
 app.use(express.json())
 //app.use(expressValidator())
