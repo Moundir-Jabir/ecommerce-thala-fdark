@@ -1,0 +1,36 @@
+version: '3'
+services:
+  api:
+    build: ./backend
+    container_name: api
+    ports:
+     - "4000:4000"
+    volumes:
+     - "./backend/:/app"
+    networks:
+     - thala-fdark
+  db:
+    image: postgres
+    restart: always
+    ports:
+     - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: ecommerce
+      POSTGRES_PASSWORD: root
+    volumes:
+     - db-data:/var/lib/postgresql/data
+    networks: 
+     - thala-fdark
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks: 
+     - thala-fdark
+volumes:
+  db-data: {}
+networks:
+  thala-fdark:
+    driver: bridge
