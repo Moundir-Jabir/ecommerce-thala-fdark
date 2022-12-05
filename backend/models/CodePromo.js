@@ -1,0 +1,1 @@
+//codepromo model
