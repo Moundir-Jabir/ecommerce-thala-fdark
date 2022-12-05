@@ -24,24 +24,27 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     const { email, password } = req.body
-    User.findOne({ email }, (err, user) => {
-        if (err || !user)
-            return res.status(400).json({
-                erreur: 'Not found user with this email'
+    User.findOne({ where: { email } })
+        .then(data => {
+            if (!data)
+                return res.status(404).json({
+                    erreur: 'Not found user with this email'
+                })
+            if (data.emailIsVerified == false)
+                return res.status(401).json({ erreur: "Email is not verified, plese check your email" })
+            if (cryptPassword(password) != data.password)
+                return res.status(401).json({
+                    erreur: 'Incorect password'
+                })
+            const token = jwt.sign({ id: data.id, role: data.role }, process.env.JWT_SECRET)
+            res.cookie('token', token, { expire: new Date() + 8062000 })
+            return res.json({ token, user: data })
+        })
+        .catch(err => {
+            return res.status(500).json({
+                erreur: 'database erreur'
             })
-        if (user.emailIsVerified == false)
-            return res.status(401).json({ erreur: "Email is not verified, plese check your email" })
-        if (!user.authenticated(password))
-            return res.status(401).json({
-                erreur: 'Incorect password'
-            })
-        const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_SECRET)
-        res.cookie('token', token, { expire: new Date() + 8062000 })
-        user.hashed_password = undefined
-        user.salt = undefined
-        user.image = undefined
-        return res.json({ token, user })
-    })
+        })
 }
 
 exports.signout = (req, res) => {
@@ -61,24 +64,30 @@ exports.forgetpassword = (req, res) => {
         return res.status(400).json({
             erreur: errors[0].msg
         })
-    User.findOne({ email: req.body.email }, (err, user) => {
-        if (err || !user)
-            return res.status(400).json({
-                erreur: 'Not found user with this email'
+    User.findOne({ where: { email: req.body.email } })
+        .then(data => {
+            if (!data)
+                return res.status(404).json({
+                    erreur: 'Not found user with this email'
+                })
+            data.codeReset = v1()
+            data.save().then((e) => {
+                const token = jwt.sign({ id: data.id, codeReset: data.codeReset }, process.env.JWT_SECRET, { expiresIn: 600 })
+                transporter.sendMail({
+                    from: `"Marhaba Application" <${process.env.EMAIL}>`,
+                    to: data.email,
+                    subject: "Réinitialisation de mot de passe pour votre compte Marhaba",
+                    html: `<p>cliquer sur ce <a href="${process.env.FRONTENDHOSTNAME}/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
+                }).then(e => res.json({
+                    message: 'An email is sent to reset your password'
+                }))
             })
-        user.codeReset = v1()
-        user.save().then((e) => {
-            const token = jwt.sign({ _id: user._id, codeReset: user.codeReset }, process.env.JWT_SECRET, { expiresIn: 600 })
-            transporter.sendMail({
-                from: `"Marhaba Application" <${process.env.EMAIL}>`,
-                to: user.email,
-                subject: "Réinitialisation de mot de passe pour votre compte Marhaba",
-                html: `<p>cliquer sur ce <a href="${process.env.FRONTENDHOSTNAME}/resetpassword/${token}">lien</a> pour réinitialiser votre mot de passe de votre compte Marhaba</p>`
-            }).then(e => res.json({
-                message: 'An email is sent to reset your password'
-            }))
         })
-    })
+        .catch(err => {
+            return res.status(500).json({
+                erreur: 'database erreur'
+            })
+        })
 }
 
 exports.resetpassword = (req, res) => {
@@ -90,7 +99,7 @@ exports.resetpassword = (req, res) => {
                 erreur: errors[0].msg
             })
         let user = req.profil
-        user.hashed_password = user.cryptPassword(req.body.password)
+        user.password = cryptPassword(req.body.password)
         user.save().then(result => res.json({
             message: `Your password is reset succesfuly`
         }))
