@@ -1,4 +1,5 @@
 FROM node:current-alpine
+RUN npm install -g nodemon
 ENV PORT=4000
 ENV JWT_SECRET=hkdhksqdjhhsqhkhjkhdkjqshdkhqsd
 ENV EMAIL=elmondhirjabir@gmail.com
