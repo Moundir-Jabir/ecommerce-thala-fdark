@@ -1,9 +1,9 @@
 const { Category } = require('../models/Category')
-// const path = require('path')
 
 const createCategory = (req, res) => {
     if(req.body.name !== '') {
-        const imgPath = req.file.path.slice(-25)
+        const path = req.file.path.split('/')
+        const imgPath = '/'+path[1]+'/'+path[2]
         Category.create({
             category_name: req.body.name, 
             category_image: imgPath
