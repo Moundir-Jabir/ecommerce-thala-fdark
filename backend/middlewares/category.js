@@ -32,7 +32,6 @@ exports.uploadImage = multer({
         const fileType = exts.test(file.mimetype)
         const imgExt = exts.test(path.extname(file.originalname))
         if(fileType && imgExt) return cb(null, true)
-        cb('file uploded is invalid')
-
+        cb(JSON.stringify('file uploded is invalid'))
     }
 }).single('image')
