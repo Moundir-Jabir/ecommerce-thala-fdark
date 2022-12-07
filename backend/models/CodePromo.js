@@ -18,7 +18,7 @@ const CodePromo = db.define('codePromo', {
         allowNull: false
     },
     products: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
         defaultValue: []
     },
     promotion: {
