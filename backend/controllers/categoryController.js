@@ -21,9 +21,11 @@ const createCategory = (req, res) => {
 
 const updateCategory = (req, res) => {
     if(req.body.name !== '') {
+        const path = req.file.path.split('/')
+        const imgPath = '/'+path[1]+'/'+path[2]
         Category.update({
             category_name: req.body.name, 
-            category_image: req.file.path
+            category_image: imgPath
         }, 
         { where: { category_id: req.category.category_id }  
         }).then(() => {

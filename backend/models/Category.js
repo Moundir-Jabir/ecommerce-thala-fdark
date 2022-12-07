@@ -9,7 +9,8 @@ const Category = db.define('category', {
     },
     category_name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     category_image: {
         type: DataTypes.STRING,
