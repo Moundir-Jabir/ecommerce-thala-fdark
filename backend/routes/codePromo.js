@@ -1,29 +1,13 @@
 const express = require('express')
 const router = express.Router()
-// const { requireSignin, isAdmin } = require('../middlewares/auth')
+const { requireSignin, isAdmin } = require('../middlewares/auth')
+const { addCodePromo ,deleteCodePromo,getCodePromo,updateCodePromo,showAllCodePromo, verifieCode} = require("../controllers/CodePromoController")
 
+router.post("/",[requireSignin, isAdmin], addCodePromo);
+router.post("/verifie", verifieCode);
+router.delete("/:id", [requireSignin, isAdmin], deleteCodePromo);
+router.get("/:id",[requireSignin, isAdmin], getCodePromo)
+router.put("/:id",[requireSignin, isAdmin], updateCodePromo)
+router.get("/",[requireSignin, isAdmin], showAllCodePromo)
 
-const { addCodePromo ,deleteCodePromo,getCodePromo,updateCodePromo,showAllCodePromo} = require("../controllers/CodePromoController")
-
-// /api/codePromo/add
-router.post("/", addCodePromo);
-
-// api/codePromo/delet
-router.delete("/:id", deleteCodePromo);
-
-
-
-//api/codepromo/getCodePromo
-router.get("/:id", getCodePromo)
-
-// api/codePromo/update
-router.put("/:id", updateCodePromo)
-
-// api/codePromo/showCodePromo
-router.get("/", showAllCodePromo)
-
-
-
-
-
-module.exports= router
+module.exports = router

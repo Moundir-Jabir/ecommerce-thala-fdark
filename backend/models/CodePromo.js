@@ -1,5 +1,5 @@
 //codepromo model
-const  {Sequelize, DataTypes } = require('sequelize')
+const { DataTypes } = require('sequelize')
 const db = require('./config')
 
 const CodePromo = db.define('codePromo', {
@@ -17,10 +17,14 @@ const CodePromo = db.define('codePromo', {
         type: DataTypes.DATE,
         allowNull: false
     },
- 
     products: {
-        type: DataTypes.ARRAY(DataTypes.STRING)
-    } 
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        defaultValue: []
+    },
+    promotion: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
 })
 
 module.exports = CodePromo 
