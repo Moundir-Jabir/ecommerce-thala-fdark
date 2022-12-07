@@ -1,28 +1,30 @@
 const request = require('supertest')
+const fs = require('fs')
 const app = require('../index')
 
 describe("/api/categories", () => {
     
     let body = {
-        name: "",
-        image: "",
+        name: ""
     }
 
     describe("POST /api/categories", () => {
         
         test("success", async () => {
             body = {
-                name: "category",
-                image: "/images/test.png"
+                name: "category"
             }
-            const response = await request(app).post("/api/categories").send(body)
+            const response = await request(app)
+                .post("/api/categories")
+                .set('content-type', 'multipart/form-data')
+                .send(body)
+                .attach('image', fs.readFileSync('/home/riad/Documents/webg.jpg'))
             expect(response.statusCode).toBe(200)
         })
 
         test("error", async () => {
             body = {
-                name: "",
-                image: "",
+                name: ""
             }
             const response = await request(app).post("/api/categories").send(body)
             expect(response.statusCode).toBe(400)
@@ -33,17 +35,19 @@ describe("/api/categories", () => {
         
         test("success", async () => {
             body = {
-                name: "category",
-                image: "/images/test1.png"
+                name: "category"
             }
-            const response = await request(app).post("/api/categories").send(body)
+            const response = await request(app)
+                .post("/api/categories")
+                .set('content-type', 'multipart/form-data')
+                .send(body)
+                .attach('image', fs.readFileSync('/home/riad/Documents/webg.jpg'))
             expect(response.statusCode).toBe(200)
         })
 
         test("error", async () => {
             body = {
-                name: "",
-                image: "",
+                name: ""
             }
             const response = await request(app).post("/api/categories").send(body)
             expect(response.statusCode).toBe(400)
