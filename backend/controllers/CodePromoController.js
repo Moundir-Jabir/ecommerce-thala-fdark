@@ -18,7 +18,7 @@ exports.addCodePromo = async (req, res) => {
   };
   try {
     await codePromo.create(newPromocode)
-    return res.json({message: "New Promo code inserted succefully"})
+    return res.json({ message: "New Promo code inserted succefully" })
   } catch (error) {
     res.send(error)
   }
@@ -74,12 +74,12 @@ exports.updateCodePromo = async (req, res) => {
   codePromo.update(req.body, {
     where: { code_id: id },
   }).then(data => {
-    if(data == 1)
+    if (data == 1)
       return res.status(200).send("code updated")
     else
-    return res.status(404).send("not found")
+      return res.status(404).send("not found")
   }).catch(err => {
-    return res.status(500).json({err})
+    return res.status(500).json({ err })
   })
 };
 
@@ -89,29 +89,26 @@ exports.showAllCodePromo = async (req, res) => {
 };
 
 exports.verifieCode = async (req, res) => {
-  //body fih idproduit ou name dial codepromo
-  //verifie si codepromo existe -> si date expiration -> si idproduit inclus dans codepromo.products
-  const {Product_id,name} = req.body 
-  //check if data Exists
+  const { Product_id, name } = req.body
   if (!name) {
-    return res.status(404).send({message: `Cannot find Codepromo with name=${name}.`});
+    return res.status(404).send({ message: `Cannot find Codepromo with name=${name}.` });
   }
   if (!Product_id) {
-    return res.status(404).send({message: `Cannot find Product with id=${Product_id}.`});
-  } 
-  const FnCodePromo = await CodePromo.findOne({where: {name : name}, raw: true, nest: true })
-  if(!FnCodePromo){
+    return res.status(404).send({ message: `Cannot find Product with id=${Product_id}.` });
+  }
+  const FnCodePromo = await codePromo.findOne({ where: { name: name }, raw: true, nest: true })
+  if (!FnCodePromo) {
     return res.status(404).send(`Codepromo  ${name} Not Found `)
   }
-  if(!FnCodePromo.products.includes(Product_id)){
-   return res.status(404).send("code promo dose not Include this Product ")
+  if (!FnCodePromo.products.includes(Product_id)) {
+    return res.status(404).send("code promo dose not Include this Product ")
   }
-   const currentTime = new Date()
-   
-   if(FnCodePromo.date_expiration>currentTime){
-    return res.status(403).send("code promo expired ")
-   }
+  const currentTime = new Date()
 
-   return res.status(201).send("Code Promo Valide")
-   
+  if (FnCodePromo.date_expiration < currentTime) {
+    return res.status(403).send("code promo expired ")
+  }
+
+  return res.status(201).send("Code Promo Valide")
+
 }
