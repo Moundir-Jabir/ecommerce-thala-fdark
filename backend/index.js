@@ -9,6 +9,7 @@ const db = require("./models/config");
 //Routers
 const authRouter = require("./routes/auth");
 const codePromo = require("./routes/codePromo");
+const categoryRouter = require('./routes/category')
 
 app.use(express.json());
 app.use(expressValidator());
@@ -26,8 +27,9 @@ db.authenticate()
   .catch((error) => console.error("Unable to connect to the database:", error));
 
 //Routes
-app.use("/api/auth", authRouter);
 app.use("/api/codePromo", codePromo);
+app.use('/api/auth', authRouter)
+app.use('/api/categories', categoryRouter)
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
