@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/admin.css">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="../assets/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/elegant-icons.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/nice-select.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/slicknav.min.css" type="text/css">
+        <link rel="stylesheet" href="../assets/css/style.css" type="text/css">
+        <title>Product Details</title>
+        
+    </head>
+    <style>
+
+    @media only screen and (max-width: 889px) {
+        #ggg {
+            flex-direction: column !important;
+        }
+    }
+    </style>
+
+    <body>
+        <div class="sidebar">
+            <div class="logo-details">
+                <i class='bx bx-store-alt'></i>                
+                <span class="logo_name">ThalaFdark</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="./dashboard.html">
+                        <i class='bx bx-grid-alt' ></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./products.html" class="active">
+                        <i class='bx bx-box' ></i>
+                        <span class="links_name">Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./orders.html">
+                        <i class='bx bx-book-alt' ></i>
+                        <span class="links_name">Total orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./categories.html">
+                        <i class='bx bx-category' ></i>
+                        <span class="links_name">Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./code-promos.html">
+                        <i class='bx bx-barcode'></i>                        
+                        <span class="links_name">Code Promos</span>
+                    </a>
+                </li>
+                <li class="log_out">
+                    <a href="#">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <section class="home-section">
+            <nav>
+                <div class="sidebar-button">
+                    <i class='bx bx-menu sidebarBtn'></i>
+                    <span class="dashboard">Product Details</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search' ></i>
+                </div>
+                <div class="profile-details">
+                    <span class="admin_name">Hi, Manager</span>
+                </div>
+            </nav>
+
+
+            <!-- create category section here -->
+
+            <div class="container pt-5 d-flex align-items-center justify-content-between" id="ggg">
+                <div class="product__details__pic pt-5 w-50" style="margin-bottom: 20px !important;">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
+                                        <div class="product__thumb__pic set-bg" data-setbg="../assets/img/shop-details/thumb-1.png">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
+                                        <div class="product__thumb__pic set-bg" data-setbg="../assets/img/shop-details/thumb-2.png">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
+                                        <div class="product__thumb__pic set-bg" data-setbg="../assets/img/shop-details/thumb-3.png">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
+                                        <div class="product__thumb__pic set-bg" data-setbg="../assets/img/shop-details/thumb-4.png">
+                                            <i class="fa fa-play"></i>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-md-9">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                    <div class="product__details__pic__item">
+                                        <img src="../assets/img/shop-details/product-big-2.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-2" role="tabpanel">
+                                    <div class="product__details__pic__item">
+                                        <img src="../assets/img/shop-details/product-big-3.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-3" role="tabpanel">
+                                    <div class="product__details__pic__item">
+                                        <img src="../assets/img/shop-details/product-big.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-4" role="tabpanel">
+                                    <div class="product__details__pic__item">
+                                        <img src="../assets/img/shop-details/product-big-4.png" alt="">
+                                        <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product__details__content w-50">
+                    <div class="container">
+                        <div class="row d-flex justify-content-start">
+                            <div class="col-lg-8">
+                                <div class="product__details__text">
+                                    <h4>Hooded thermal anorak</h4>
+                                    <div class="rating">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <span> - 5 Reviews</span>
+                                    </div>
+                                    <h3>$270.00</h3>
+                                    <div class="product__details__last__option">
+                                        <ul class="pt-1">
+                                            <li class="d-flex justify-content-center">
+                                                <h4 class="mb-1 mx-1">Stock: </h4><h4 style="color: lightslategrey;">10</h4>
+                                            </li>
+                                            <li class="d-flex justify-content-center">
+                                                <h4 class="mb-1 mx-1">Purchased: </h4><h4 style="color: lightslategrey;">10</h4>
+                                            </li>
+                                            <li class="d-flex justify-content-center">
+                                                <h4 class="mb-1 mx-1">Promotion: </h4><h4 style="color: lightslategrey;">-10%</h4>
+                                            </li>
+                                            <li class="d-flex justify-content-center">
+                                                <h4 class="mb-1 mx-1">Category: </h4><h4 style="color: lightslategrey;">Ikhan</h4>
+                                            </li>
+                                            <li class="d-flex justify-content-center">
+                                                <a href="./update-product.html" class="rounded-1 btn btn-primary mx-1">Update</a><a href="./update-product.html" class="btn btn-danger mx-1 rounded-1">Delete</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="background-color: white !important;">
+                <div class="row container mx-auto">
+                    <div class="col-lg-12">
+                        <div class="product__details__tab" style="padding-top: 0px !important;">
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item pt-3">
+                                    <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                    role="tab">Description</a>
+                                </li>
+                                <li class="nav-item pt-3">
+                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Our Customers Experience</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <p class="note">Nam tempus turpis at metus scelerisque placerat nulla deumantos
+                                            solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis
+                                            ut risus. Sedcus faucibus an sullamcorper mattis drostique des commodo
+                                        pharetras loremos.</p>
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Products Infomation</h5>
+                                            <p>A Pocket PC is a handheld computer, which features many of the same
+                                                capabilities as a modern PC. These handy little devices allow
+                                                individuals to retrieve and store e-mail messages, create a contact
+                                                file, coordinate appointments, surf the internet, exchange text messages
+                                                and more. Every product that is labeled as a Pocket PC must be
+                                                accompanied with specific software to operate the unit and must feature
+                                            a touchscreen and touchpad.</p>
+                                            <p>As is the case with any new technology product, the cost of a Pocket PC
+                                                was substantial during it’s early release. For approximately $700.00,
+                                                consumers could purchase one of top-of-the-line Pocket PCs in 2003.
+                                                These days, customers are finding that prices have become much more
+                                                reasonable now that the newness is wearing off. For approximately
+                                            $350.00, a new Pocket PC can now be purchased.</p>
+                                        </div>
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Material used</h5>
+                                            <p class="mb-5">Polyester is deemed lower quality due to its none natural quality’s. Made
+                                                from synthetic materials, not natural like wool. Polyester suits become
+                                                creased easily and are known for not being breathable. Polyester suits
+                                                tend to have a shine to them compared to wool and cotton suits, this can
+                                                make the suit look cheap. The texture of velvet is luxurious and
+                                                breathable. Velvet is a great choice for dinner party jacket and can be
+                                            worn all year round.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tabs-6" role="tabpanel">
+                                    <div class="product__details__tab__content">
+                                        <div class="product__details__tab__content__item">
+                                            <h5>Jhon Doe</h5>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sit molestiae mollitia totam explicabo nostrum, nisi, tempore reiciendis ipsa dolore pariatur fugit? Repudiandae aperiam, incidunt similique quis modi optio delectus?</p>
+    
+                                            <h5 class="mt-3">Mondir</h5>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sit molestiae mollitia totam explicabo nostrum, nisi, tempore reiciendis ipsa dolore pariatur fugit? Repudiandae aperiam, incidunt similique quis modi optio delectus?</p>
+    
+                                            <h5 class="mt-3">Bokhari</h5>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sit molestiae mollitia totam explicabo nostrum, nisi, tempore reiciendis ipsa dolore pariatur fugit? Repudiandae aperiam, incidunt similique quis modi optio delectus?</p>
+    
+                                            <h5 class="mt-3">Jhon Doe Again</h5>
+                                            <p class="mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque sit molestiae mollitia totam explicabo nostrum, nisi, tempore reiciendis ipsa dolore pariatur fugit? Repudiandae aperiam, incidunt similique quis modi optio delectus?</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Js Plugins -->
+        <script src="../assets/js/jquery-3.3.1.min.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/jquery.nice-select.min.js"></script>
+        <script src="../assets/js/jquery.nicescroll.min.js"></script>
+        <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="../assets/js/jquery.countdown.min.js"></script>
+        <script src="../assets/js/jquery.slicknav.js"></script>
+        <script src="../assets/js/mixitup.min.js"></script>
+        <script src="../assets/js/owl.carousel.min.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script>
+            let sidebar = document.querySelector(".sidebar")
+            let sidebarBtn = document.querySelector(".sidebarBtn")
+            sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active")
+            if(sidebar.classList.contains("active")){
+                sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right")
+            } else
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu")
+            }
+        </script>
+    </body>
+</html>

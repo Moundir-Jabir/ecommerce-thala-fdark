@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Categories</title>
+        <link rel="stylesheet" href="../assets/css/admin.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo-details">
+                <i class='bx bx-store-alt'></i>                
+                <span class="logo_name">ThalaFdark</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="./dashboard.html">
+                        <i class='bx bx-grid-alt' ></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./products.html">
+                        <i class='bx bx-box' ></i>
+                        <span class="links_name">Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./orders.html">
+                        <i class='bx bx-book-alt' ></i>
+                        <span class="links_name">Total orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./categories.html" class="active">
+                        <i class='bx bx-category' ></i>
+                        <span class="links_name">Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./code-promos.html">
+                        <i class='bx bx-barcode'></i>                        
+                        <span class="links_name">Code Promos</span>
+                    </a>
+                </li>
+                <li class="log_out">
+                    <a href="#">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <section class="home-section">
+            <nav>
+                <div class="sidebar-button">
+                    <i class='bx bx-menu sidebarBtn'></i>
+                    <span class="dashboard">Categories</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search' ></i>
+                </div>
+                <div class="profile-details">
+                    <span class="admin_name">Hi, Manager</span>
+                </div>
+            </nav>
+
+            <!-- categories section here -->
+
+            <div class="container py-5">
+                <div class="d-flex align-items-center justify-content-between mt-5 mb-2 py-2 px-2 rounded" style="background-color: rgb(201, 197, 197);">
+                    <h4 class="m-0 p-0">Categories</h4>
+                    <a href="./create-category.html" class="btn btn-primary me-1" data-mdb-ripple-color="dark" style="width: fit-content !important;">Create Category</a>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-lg-4 mb-2">
+                        <div class="card text-black">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-product-cards/img1.webp" class="card-img-top" alt="iPhone" />
+                            <div class="card-body">
+                                <div class="text-center mt-1">
+                                    <h4 class="card-title">Category X</h4>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <a href="./update-category.html" class="btn btn-primary flex-fill me-1 mx-1" data-mdb-ripple-color="dark">update</a>
+                                    <button type="button" class="btn btn-danger flex-fill ms-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 mb-2">
+                        <div class="card text-black">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-product-cards/img1.webp" class="card-img-top" alt="iPhone" />
+                            <div class="card-body">
+                                <div class="text-center mt-1">
+                                    <h4 class="card-title">Category X</h4>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <button type="button" class="btn btn-primary flex-fill me-1 mx-1" data-mdb-ripple-color="dark">update</button>
+                                    <button type="button" class="btn btn-danger flex-fill ms-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4 mb-2">
+                        <div class="card text-black">
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-product-cards/img1.webp" class="card-img-top" alt="iPhone" />
+                            <div class="card-body">
+                                <div class="text-center mt-1">
+                                    <h4 class="card-title">Category X</h4>
+                                </div>
+                                <div class="d-flex flex-row">
+                                    <button type="button" class="btn btn-primary flex-fill me-1 mx-1" data-mdb-ripple-color="dark">update</button>
+                                    <button type="button" class="btn btn-danger flex-fill ms-1">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <script>
+            let sidebar = document.querySelector(".sidebar")
+            let sidebarBtn = document.querySelector(".sidebarBtn")
+            sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active")
+            if(sidebar.classList.contains("active")){
+                sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right")
+            } else
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu")
+            }
+        </script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
+
