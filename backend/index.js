@@ -10,6 +10,8 @@ const db = require("./models/config");
 const authRouter = require("./routes/auth");
 const codePromo = require("./routes/codePromo");
 const categoryRouter = require('./routes/category')
+const product = require('./routes/product')
+
 
 app.use(express.json());
 app.use(expressValidator());
@@ -30,6 +32,8 @@ db.authenticate()
 app.use("/api/codePromo", codePromo);
 app.use('/api/auth', authRouter)
 app.use('/api/categories', categoryRouter)
+app.use('/api/product', product)
+
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
