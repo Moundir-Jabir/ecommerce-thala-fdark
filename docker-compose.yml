@@ -1,5 +1,14 @@
 version: '3'
 services:
+  web:
+    build: ./frontend
+    container_name: web
+    ports:
+     - "3000:3000"
+    volumes:
+     - "./frontend/:/app"
+    networks: 
+     - thala-fdark
   api:
     build: ./backend
     container_name: api
