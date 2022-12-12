@@ -1,6 +1,8 @@
 //codepromo model
 const { DataTypes } = require('sequelize')
 const db = require('./config')
+// const Category = require('./Category');
+
 
 const Product = db.define('product', {
     product_id: {
@@ -44,5 +46,7 @@ const Product = db.define('product', {
     }
    
 })
+//   Category.hasMany(Product);
+//   Product.belongsTo(Category);
 
 module.exports = Product
