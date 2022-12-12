@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Orders</title>
+        <link rel="stylesheet" href="../assets/css/admin.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+        <div class="sidebar">
+            <div class="logo-details">
+                <i class='bx bx-store-alt'></i>                
+                <span class="logo_name">ThalaFdark</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="./dashboard.html">
+                        <i class='bx bx-grid-alt' ></i>
+                        <span class="links_name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./products.html">
+                        <i class='bx bx-box' ></i>
+                        <span class="links_name">Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./orders.html">
+                        <i class='bx bx-book-alt' ></i>
+                        <span class="links_name">Total orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./categories.html">
+                        <i class='bx bx-category' ></i>
+                        <span class="links_name">Categories</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./code-promos.html" class="active">
+                        <i class='bx bx-barcode'></i>                        
+                        <span class="links_name">Code Promos</span>
+                    </a>
+                </li>
+                <li class="log_out">
+                    <a href="#">
+                        <i class='bx bx-log-out'></i>
+                        <span class="links_name">Log out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <section class="home-section">
+            <nav>
+                <div class="sidebar-button">
+                    <i class='bx bx-menu sidebarBtn'></i>
+                    <span class="dashboard">Orders</span>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search' ></i>
+                </div>
+                <div class="profile-details">
+                    <span class="admin_name">Hi, Manager</span>
+                </div>
+            </nav>
+
+            <!-- orders section here -->
+            <div class="home-content">
+                <div class="d-flex align-items-center justify-content-between mt-5 mb-2 py-2 px-2 rounded mx-auto" style="background-color: rgb(201, 197, 197); width: 80%;">
+                    <h4 class="m-0 p-0">Code Promos</h4>
+                    <a href="./create-code-promo.html" class="btn btn-primary me-1" data-mdb-ripple-color="dark" style="width: fit-content !important;">Create Code Promo</a>
+                </div>
+                <div class="sales-boxes">
+                    <div class="recent-sales box">
+                        <div class="sales-details">
+                            <ul class="details">
+                                <li class="topic">Code</li>
+                                <li><a href="#">4444reHC5555fhgv,6666RGhx(55t(t))</a></li>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic">Discount Value</li>
+                                <li><a href="#">30%</a></li>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic">Expiration Date</li>
+                                <li><a href="#">10 Mars 2002</a></li>
+                            </ul>
+                            <ul class="details">
+                                <li class="topic">Permitted Products ( id )</li>
+                                <li><a href="#">1, 4, 6, 6, 7</a></li>
+                            </ul>
+                            <ul class="details text-center">
+                                <li class="topic">Action</li>
+                                <li>
+                                    <a href="./update-code-promo.html" class="text-primary">Update</a>
+                                    <a href="#" class="text-danger">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            let sidebar = document.querySelector(".sidebar")
+            let sidebarBtn = document.querySelector(".sidebarBtn")
+            sidebarBtn.onclick = function() {
+            sidebar.classList.toggle("active")
+            if(sidebar.classList.contains("active")){
+                sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right")
+            } else
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu")
+            }
+        </script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
+
+
