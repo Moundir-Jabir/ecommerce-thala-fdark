@@ -1,8 +1,6 @@
-//codepromo model
 const { DataTypes } = require('sequelize')
 const db = require('./config')
-// const Category = require('./Category');
-
+const Category = require('./Category');
 
 const Product = db.define('product', {
     product_id: {
@@ -17,7 +15,6 @@ const Product = db.define('product', {
     },
     description: {
         type: DataTypes.STRING,
-        unique: true,
         allowNull: false
     },
     price: {
@@ -26,19 +23,20 @@ const Product = db.define('product', {
     },
     stock: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        defaultValue: 0
     },
     qauntity_purchased: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        defaultValue: 0
     },
     promotion: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        defaultValue: 0
     },
     promo_expiration: {
         type: DataTypes.DATE,
-        allowNull: false
+        allowNull: true,
+        defaultValue: null
     },
     images: {
         type: DataTypes.ARRAY(DataTypes.STRING),
@@ -46,7 +44,8 @@ const Product = db.define('product', {
     }
    
 })
-//   Category.hasMany(Product);
-//   Product.belongsTo(Category);
+
+Category.hasMany(Product);
+Product.belongsTo(Category);
 
 module.exports = Product

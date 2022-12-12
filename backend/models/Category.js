@@ -17,4 +17,4 @@ const Category = db.define('category', {
     }
 })
 
-module.exports = { Category }
+module.exports = Category

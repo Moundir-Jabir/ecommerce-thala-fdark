@@ -34,4 +34,4 @@ exports.uploadImage = multer({
         if(fileType && imgExt) return cb(null, true)
         cb(JSON.stringify('file uploded is invalid'))
     }
-}).single('image')
+}).array('images', 4)
