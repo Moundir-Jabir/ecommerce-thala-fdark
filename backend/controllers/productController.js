@@ -1,7 +1,14 @@
 const Product = require("../models/Product");
+const Category = require("../models/Category");
 const path = require('path');
 
-exports.addProduct = (req, res) => {
+
+exports.addProduct = async (req, res) => {
+ const Category_id = req.body.Category_id ; 
+ const findCategory = await Category.findByPk(Category_id)
+ if (!findCategory){
+  res.status(404).send("Category dose Not exist")
+ }
   if (
     req.body.name !== "" &&
     req.body.description !== "" &&
@@ -10,10 +17,10 @@ exports.addProduct = (req, res) => {
     req.body.qauntity_purchased !== "" &&
     req.body.promotion !== ""
   ) {
-    const img = []
+    const img = [];
     req.files.forEach((filePath) => {
-      const path1 = filePath.path.split(path.sep);
-      const imgPath = "/" + path1[1] + "/" + path1[2];
+      const pathOne = filePath.path.split(path.sep);
+      const imgPath = "/" + pathOne[1] + "/" + pathOne[2];
       img.push(imgPath);
     });
     Product.create({
@@ -25,6 +32,9 @@ exports.addProduct = (req, res) => {
       promotion: req.body.promotion,
       promo_expiration: req.body.promo_expiration,
       images: img,
+      categoryCategoryId:Category_id
+
+       
     })
       .then(() => {
         res.send("New Product inserted Succefully");
@@ -60,8 +70,8 @@ exports.getProduct =(req,res)=>{
 };
 
 
-exports.updateProduct=(req,res)=>{
-  const id = req.params.id;
+exports.updateProduct= async (req,res)=>{
+ const id = req.params.id;
   if (
     req.body.name !== "" &&
     req.body.description !== "" &&
@@ -72,8 +82,8 @@ exports.updateProduct=(req,res)=>{
   ) {
     const img = [];
     req.files.forEach((filePath) => {
-      const path = filePath.path.split("\\");
-      const imgPath = "/" + path[1] + "/" + path[2];
+      const pathOne = filePath.path.split(path.sep);
+      const imgPath = "/" + pathOne[1] + "/" + pathOne[2];
       img.push(imgPath);
     });
     Product.update({
