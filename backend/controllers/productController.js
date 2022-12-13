@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const path = require('path');
 
 exports.addProduct = (req, res) => {
   if (
@@ -9,10 +10,10 @@ exports.addProduct = (req, res) => {
     req.body.qauntity_purchased !== "" &&
     req.body.promotion !== ""
   ) {
-    const img = [];
+    const img = []
     req.files.forEach((filePath) => {
-      const path = filePath.path.split("\\");
-      const imgPath = "/" + path[1] + "/" + path[2];
+      const path1 = filePath.path.split(path.sep);
+      const imgPath = "/" + path1[1] + "/" + path1[2];
       img.push(imgPath);
     });
     Product.create({
