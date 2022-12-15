@@ -39,15 +39,15 @@ const Login = () => {
   }
   const { email, password } = user
   const links = [
-    { link: "Register Now!", to: "/register" },
-    { link: "Forgot password ?", to: "/forgotpassword" }
+    { name: "Forgot password?", to: "/forgotpassword", description: "" },
+    { name: "Register", to: "/register", description: "Don't have an account?" }
   ]
   let inputs = [
-    { name: "email", value: email, type: "email", icon: "mail_outline", label: "Email", error: "" },
-    { name: "password", value: password, type: "password", icon: "lock_outline", label: "Password", error: "" }
+    { name: "email", value: email, type: "email", error: "", placeholder: "Email" },
+    { name: "password", value: password, type: "password", error: "", placeholder: "Password" }
   ]
   return (
-    <FormCard submit={submit} title="Login" description="" button="Login" links={links} inputs={inputs} setState={setUser} state={user} />
+    <FormCard submit={submit} title="Log in" button="Login" links={links} inputs={inputs} setState={setUser} state={user} />
   )
 }
 
