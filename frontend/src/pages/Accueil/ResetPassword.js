@@ -56,12 +56,12 @@ const ResetPassword = () => {
   const { passwordError, password2Error } = error
   let { token } = useParams()
   let inputs = [
-    { name: "password", value: password, type: "password", icon: "lock_outline", label: "New Password", error: passwordError },
-    { name: "password2", value: password2, type: "password", icon: "lock_outline", label: "Validate password", error: password2Error },
+    { name: "password", value: password, type: "password", placeholder: "New Password", error: passwordError },
+    { name: "password2", value: password2, type: "password", placeholder: "Validate password", error: password2Error },
   ]
 
   return (
-    <FormCard submit={submit} title="Reset Password" description="Enter your new password" links={[]} button="Reset Password" inputs={inputs} setState={setUser} state={user} />
+    <FormCard submit={submit} title="Reset Password" links={[]} button="Reset Password" inputs={inputs} setState={setUser} state={user} />
   )
 }
 

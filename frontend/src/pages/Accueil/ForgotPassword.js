@@ -18,7 +18,7 @@ const ForgotPassword = () => {
         toastr.success(res.data.message, 'Success', {
           positionClass: "toast-bottom-left"
         })
-        setUser({email: ""})
+        setUser({ email: "" })
       })
       .catch((err) => {
         if (err.response.data.erreur) {
@@ -35,14 +35,13 @@ const ForgotPassword = () => {
 
   const { email } = user
   const links = [
-    { link: "Login", to: "/login" },
-    { link: "Register", to: "/register" }
+    { name: "Register", to: "/register", description: "Create new account ?" }
   ]
   let inputs = [
-    { name: "email", value: email, type: "email", icon: "person_outline", label: "Email", error: "" }
+    { name: "email", value: email, type: "email", placeholder: "Enter Your Email", error: "" }
   ]
   return (
-    <FormCard submit={submit} title="Forgot Password" description="You can reset your password" button="Reset Password" links={links} inputs={inputs} setState={setUser} state={user} />
+    <FormCard submit={submit} title="Forget Password" button="Reset Password" links={links} inputs={inputs} setState={setUser} state={user} />
   )
 }
 

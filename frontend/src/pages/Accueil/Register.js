@@ -5,6 +5,7 @@ import { API_URL } from '../../config'
 import toastr from 'toastr'
 import 'toastr/build/toastr.css'
 import FormCard from '../../components/forms/FormCard'
+import "../../css/register.css"
 
 const Register = () => {
 
@@ -65,16 +66,16 @@ const Register = () => {
   const { name, email, password, password2 } = user
   const { nameError, emailError, passwordError, password2Error } = error
   const links = [
-    { link: "Already have an account? Login", to: "/login" }
+    { name: "Log in", to: "/login", description: "Already have an account?" }
   ]
   let inputs = [
-    { name: "name", value: name, type: "text", icon: "person_outline", label: "Full Name", error: nameError },
-    { name: "email", value: email, type: "email", icon: "mail_outline", label: "Email", error: emailError },
-    { name: "password", value: password, type: "password", icon: "lock_outline", label: "Password", error: passwordError },
-    { name: "password2", value: password2, type: "password", icon: "lock_outline", label: "Password again", error: password2Error }
+    { name: "name", value: name, type: "text", placeholder: "Full Name", error: nameError },
+    { name: "email", value: email, type: "email", placeholder: "Email", error: emailError },
+    { name: "password", value: password, type: "password", placeholder: "Password", error: passwordError },
+    { name: "password2", value: password2, type: "password", placeholder: "Confirm password", error: password2Error }
   ]
   return (
-    <FormCard submit={submit} title="Register" description="Welcome to Marhaba restaurant" button="Register" links={links} inputs={inputs} setState={setUser} state={user} />
+    <FormCard submit={submit} title="Register" button="Register" links={links} inputs={inputs} setState={setUser} state={user} />
   )
 }
 
