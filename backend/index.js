@@ -16,7 +16,7 @@ const product = require('./routes/product')
 app.use(express.json());
 app.use(expressValidator());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.static("public")); // permet l'acces au fichiers de public
 
 db.authenticate()
