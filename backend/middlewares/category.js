@@ -1,4 +1,4 @@
-const { Category } = require('../models/Category')
+const Category = require('../models/Category')
 const multer = require('multer')
 const path = require('path')
 

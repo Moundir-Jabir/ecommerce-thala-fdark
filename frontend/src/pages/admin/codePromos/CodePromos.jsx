@@ -1,14 +1,9 @@
-import Sidebar from '../../../components/common/Sidebar'
-import AdminNav from '../../../components/common/AdminNav'
 import '../../../css/admin.css'
 import { Link } from 'react-router-dom'
 
 function CodePromos() {
   return (
     <>
-      <Sidebar />
-      <section className='home-section'>
-        <AdminNav />
         <div className="home-content">
         <div className="d-flex align-items-center justify-content-between mt-5 mb-2 py-2 px-2 rounded mx-auto" style={ { backgroundColor: 'rgb(201, 197, 197)', width: '80%' } }>
             <h4 className="m-0 p-0">Code Promos</h4>
@@ -44,7 +39,6 @@ function CodePromos() {
               </div>
             </div>
         </div>
-      </section>
     </>
   )
 }

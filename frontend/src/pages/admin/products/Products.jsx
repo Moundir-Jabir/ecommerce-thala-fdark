@@ -1,15 +1,9 @@
-import Sidebar from '../../../components/common/Sidebar'
-import AdminNav from '../../../components/common/AdminNav'
 import '../../../css/admin.css'
 
 function Products() {
-  return (
-    <>
-      <Sidebar />
-      <section className="home-section">
-        <AdminNav />
-
-        {/* <div className="container py-5">
+    return (
+        <>
+            {/* <div className="container py-5">
                 <div className="d-flex align-items-center justify-content-between mt-5 mb-2 py-2 px-2 rounded" style={{ backgroundColor: 'rgb(201, 197, 197)' }}>
                     <h4 className="m-0 p-0">Products</h4>
                     <a href="./create-product.html" className="btn btn-primary me-1" data-mdb-ripple-color="dark" style={{ width: 'fit-content !important' }}>Create New Product</a>
@@ -52,14 +46,9 @@ function Products() {
                     </div>
                 </div>
         </div> */}
-
-        <center><h1 style={{ paddingTop: '200px' }}>Products here</h1></center>
-        
-
-      </section>
-
-    </>
-  )
+            <center><h1 style={{ paddingTop: '200px' }}>Products here</h1></center>
+        </>
+    )
 }
 
 export default Products

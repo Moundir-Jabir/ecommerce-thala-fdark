@@ -1,13 +1,8 @@
-import Sidebar from '../../../components/common/Sidebar'
-import AdminNav from '../../../components/common/AdminNav'
 import '../../../css/admin.css'
 
 function Orders() {
   return (
     <>
-      <Sidebar />
-      <section className='home-section'>
-        <AdminNav />
         <div className="home-content">
           <div className="sales-boxes">
             <div className="recent-sales box">
@@ -47,8 +42,6 @@ function Orders() {
             </div>
           </div>
         </div>
-      </section>
-
     </>
   )
 }

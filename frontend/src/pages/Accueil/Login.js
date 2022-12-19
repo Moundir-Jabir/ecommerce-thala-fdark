@@ -23,7 +23,10 @@ const Login = () => {
           positionClass: "toast-bottom-left"
         })
         login(res.data.user, res.data.token)
-        navigate('/dashboard')
+        if(res.data.user.role === "client")
+          navigate('/dashboard')
+        else
+          navigate('/admin/dashboard')
       })
       .catch((err) => {
         if (err.response.data.erreur) {
