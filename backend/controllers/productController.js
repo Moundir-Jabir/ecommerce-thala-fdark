@@ -23,23 +23,23 @@ exports.addProduct = async (req, res) => {
       const imgPath = "/" + pathOne[1] + "/" + pathOne[2];
       img.push(imgPath);
     });
+    console.log(req)
     Product.create({
       name: req.body.name,
       description: req.body.description,
       price: req.body.price,
       stock: req.body.stock,
-      qauntity_purchased: req.body.qauntity_purchased,
       promotion: req.body.promotion,
       promo_expiration: req.body.promo_expiration,
       images: img,
-      categoryCategoryId: Category_id,
+      categoryCategoryId: findCategory?.category_id,
     })
-      .then(() => {
-        res.send("New Product inserted Succefully");
-      })
-      .catch((err) => {
-        res.json({ error: err });
-      });
+    .then(() => {
+      res.send("New Product inserted Succefully");
+    })
+    .catch((err) => {
+      res.json({ error: err });
+    });
   } else {
     return res.status(400).json({
       erreur: "fill all the fields",
