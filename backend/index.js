@@ -11,6 +11,7 @@ const authRouter = require("./routes/auth");
 const codePromo = require("./routes/codePromo");
 const categoryRouter = require('./routes/category')
 const product = require('./routes/product')
+const orderRouter = require('./routes/order')
 
 
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use("/api/codePromo", codePromo);
 app.use('/api/auth', authRouter)
 app.use('/api/categories', categoryRouter)
 app.use('/api/product', product)
+app.use('/api/orders', orderRouter)
 
 
 const port = process.env.PORT || 3000;
