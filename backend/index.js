@@ -5,6 +5,7 @@ const expressValidator = require("express-validator");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const db = require("./models/config");
+// require('./models/OrdredProduct')
 
 //Routers
 const authRouter = require("./routes/auth");

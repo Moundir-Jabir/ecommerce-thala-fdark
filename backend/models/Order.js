@@ -19,11 +19,14 @@ const Order = db.define('order', {
     },
     amount_paid: {
         type: DataTypes.INTEGER,
+    },
+    client_address: {
+        type: DataTypes.STRING,
+    },
+    client_city: {
+        type: DataTypes.STRING,
     }
 })
-
-Product.hasMany(Order)
-Order.belongsTo(Product)
 
 User.hasMany(Order)
 Order.belongsTo(User)

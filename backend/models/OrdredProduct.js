@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize')
 const db = require('./config')
 const Order = require('./Order')
+const Product = require('./Product')
 
 const OrderedProduct = db.define('ordered_product', {
     order_product_id: {
@@ -21,6 +22,9 @@ const OrderedProduct = db.define('ordered_product', {
         type: DataTypes.STRING,
     }
 })
+
+Product.hasMany(OrderedProduct)
+OrderedProduct.belongsTo(Product)
 
 Order.hasMany(OrderedProduct)
 OrderedProduct.belongsTo(Order)
