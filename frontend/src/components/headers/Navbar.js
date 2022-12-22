@@ -1,13 +1,14 @@
 import axios from 'axios'
 import React from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { API_URL } from '../../config'
 import toastr from 'toastr'
 import 'toastr/build/toastr.css'
-import { logout } from '../../helpers'
+import { isAuthenticated, logout } from '../../helpers'
+import profil from "../../assets/img/icon/me.png"
+import panier from "../../assets/img/icon/cart.png"
 
 const Navbar = () => {
-    const id = JSON.parse(localStorage.getItem('user_info'))._id
     const navigate = useNavigate()
 
     const signout = () => {
@@ -17,21 +18,46 @@ const Navbar = () => {
                     positionClass: "toast-bottom-left"
                 })
                 logout()
-                navigate('/')
+                navigate('/home')
             })
     }
     return (
-        <header className="page-topbar" id="header">
-            <div className="navbar navbar-fixed">
-                <nav className="navbar-main navbar-color nav-collapsible sideNav-lock navbar-dark gradient-45deg-indigo-purple no-shadow">
-                    <div className="nav-wrapper">
-                        <ul className="navbar-list right">
-                            <li><NavLink to='/dashboard' className="waves-effect waves-block waves-light profile-button" data-target="profile-dropdown">Dashboard</NavLink></li>
-                            <li><NavLink to='/profil' className="waves-effect waves-block waves-light profile-button" data-target="profile-dropdown"><span className="avatar-status avatar-online"><img src={`${API_URL}/user/image/${id}`} alt="avatar" /><i></i></span></NavLink></li>
-                            <li onClick={signout}><a className="waves-effect waves-block waves-light notification-button" data-target="notifications-dropdown"><i className="material-icons">exit_to_app</i></a></li>
-                        </ul>
+        <header className="header">
+            <div className="header__top">
+                <div>
+                    <div className="input-group w-50 mx-auto">
+                        <input type="search" className="form-control" placeholder="Search" />
+                        <button type="button" className="btn btn-outline-warning">search</button>
                     </div>
-                </nav>
+                </div>
+            </div>
+            <div>
+                <div className="row">
+                    <div className="col-lg-3 col-md-3">
+                        <div className="header__logo">
+                            <Link to="/home" style={{ fontSize: '25px', fontWeight: 700, color: "black" }}>Thala Fdark</Link>
+                        </div>
+                    </div>
+                    <div className="col-lg-6 col-md-6">
+                        <nav className="header__menu mobile-menu">
+                            <ul>
+                                <li className="active"><NavLink to="/home">Home</NavLink></li>
+                                <li><NavLink to="/shop">Shop</NavLink></li>
+                                {
+                                    isAuthenticated() ? (<li onClick={signout}><NavLink>Logout</NavLink></li>) : (<li><NavLink to="/login">Sign in</NavLink></li>)
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+                    <div className="col-lg-3 col-md-3">
+                        <div className="header__nav__option">
+                            <Link to="/profil"><img src={profil} width="25px" alt="" /></Link>
+                            <Link to="/cart"><img src={panier} alt="" /> <span style={{ marginLeft: '6px', marginTop: '-18px', padding: '3px', backgroundColor: 'rgb(244, 201, 201)', borderRadius: '50%' }}>110</span></Link>
+                            <div className="price">$0.00</div>
+                        </div>
+                    </div>
+                </div>
+                <div className="canvas__open"><i className="fa fa-bars"></i></div>
             </div>
         </header>
     )

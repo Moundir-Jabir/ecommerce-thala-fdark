@@ -6,12 +6,14 @@ const {
   getProduct,
   updateProduct,
   showAllProducts,
+  dealOfTheWeak
 } = require("../controllers/productController");
 const { uploadImage } = require("../middlewares/category");
 
 router.post("/", uploadImage, addProduct);
 router.put("/:id", uploadImage, updateProduct);
-router.get("/", showAllProducts);
+router.post("/all", showAllProducts);
 router.get("/:id", getProduct);
+router.get("/promo/dealOfTheWeak", dealOfTheWeak);
 
 module.exports = router;

@@ -24,7 +24,7 @@ const Login = () => {
         })
         login(res.data.user, res.data.token)
         if(res.data.user.role === "client")
-          navigate('/dashboard')
+          navigate('/home')
         else
           navigate('/admin/dashboard')
       })

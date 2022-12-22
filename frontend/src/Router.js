@@ -11,6 +11,10 @@ import NotFound from './pages/Accueil/NotFound'
 import Navbar from './components/headers/Navbar'
 import { Admin, Categories, CreateCategory, UpdateCategory, Products, CreateProduct, UpdateProduct, CodePromos, CreateCodePromo, UpdateCodePromo, Orders, UpdateOrder } from './pages/admin/index'
 import AdminDashboard from './pages/admin/dashbord/AdminDashboard'
+import Shop from './pages/Accueil/Shop'
+import Profil from './pages/User/Profil'
+import Cart from './pages/Accueil/Cart'
+import FicheProduct from './pages/Accueil/FicheProduct'
 
 const Router = () => {
 
@@ -28,18 +32,21 @@ const Router = () => {
     }
 
     const PublicRoute = ({ children }) => {
-        return isAuthenticated() ? <Navigate to="/dashboard" /> : children
+        return isAuthenticated() ? <Navigate to="/home" /> : children
     }
 
     return (
         <Routes>
             <Route path='/' element={<Navigate to="home" />} />
-            <Route path='home' element={<PublicRoute><Home /></PublicRoute>} />
+            <Route path='home' element={<Home />} />
+            <Route path='shop' element={<Shop />} />
             <Route path='register' element={<PublicRoute><Register /></PublicRoute>} />
             <Route path='login' element={<PublicRoute><Login /></PublicRoute>} />
             <Route path='forgotpassword' element={<PublicRoute><ForgotPassword /></PublicRoute>} />
             <Route path='resetpassword/:token' element={<PublicRoute><ResetPassword /></PublicRoute>} />
-            <Route path='dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+            <Route path='profil' element={<PrivateRoute><Profil /></PrivateRoute>} />
+            <Route path='cart' element={<Cart />} />
+            <Route path='product/:id' element={<FicheProduct />} />
             <Route path='admin' element={<ManagerRoute><Admin /></ManagerRoute>}>
                 <Route path='dashboard' element={<AdminDashboard />} />
                 <Route path='categories' element={<Categories />} />
