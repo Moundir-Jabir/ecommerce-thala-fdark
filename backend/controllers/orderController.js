@@ -20,8 +20,9 @@ const makeOrder = async (req, res) => {
     })
 
     let productData = req.body.products
-    productData.forEach(product => {
-        product.orderId = orderData.order_id
+    productData = productData.map(product => {
+        product.orderOrderId = orderData.order_id
+        return product
     })
 
     OrderdProduct.bulkCreate(productData)
