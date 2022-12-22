@@ -49,7 +49,7 @@ exports.addProduct = async (req, res) => {
 
 exports.getProduct = (req, res) => {
   const id = req.params.id;
-  Product.findByPk(id)
+  Product.findByPk(id, { include: Category })
     .then((data) => {
       if (data) {
         res.status(200).send(data);
@@ -108,23 +108,24 @@ exports.updateProduct = async (req, res) => {
   }
 };
 
-
 exports.showAllProducts = async (req, res) => {
   const limit = req.query.limit || 4;
   const offset = req.query.offset || 0;
   const orderby = req.query.orderby || "createdAt";
   const value = req.query.value || "DESC";
-  const Category_id = req.body.Category_id ;
+  const Category_id = req.body.Category_id || []
   const searchName = req.body.nameFilter;
-  const categoryCondition = Category_id ? { categoryCategoryId: Category_id}:null;
-  const filterByName = searchName ? { name: { [Op.like]: `%${searchName}%` } }:null;
+  const price = req.body.price;
+  const priceCondition = price ? { price: { [Op.between]: [price[0], price[1]] } } : null
+  const categoryCondition = (Category_id.length != 0) ? { categoryCategoryId: Category_id } : null;
+  const filterByName = searchName ? { name: { [Op.like]: `%${searchName}%` } } : null;
   try {
-      const allProduct = await Product.findAll({
+    const allProduct = await Product.findAll({
       limit: limit,
       offset: offset,
       order: [[orderby, value]],
-      where: {[Op.and]: [categoryCondition , filterByName]}
-      
+      where: { [Op.and]: [categoryCondition, filterByName, priceCondition] }
+
     });
     return res.status(200).json(allProduct);
 
@@ -132,3 +133,18 @@ exports.showAllProducts = async (req, res) => {
     return res.status(500).json(e);
   }
 };
+
+exports.dealOfTheWeak = (req, res) => {
+  Product.findOne({
+    order: [["promotion", "DESC"]],
+    where: {
+      promo_expiration: {
+        [Op.gt]: new Date()
+      }
+    }
+  }).then(data => {
+    return res.send(data)
+  }).catch(err => {
+    return res.status(404).send(err)
+  })
+}
