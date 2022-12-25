@@ -5,8 +5,11 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import { API_URL, hostname } from '../../config'
 import Product from '../../components/common/Product'
+import { addToCart } from '../../redux/actions/cartActions'
+import { connect } from 'react-redux'
+import toastr from 'toastr'
 
-const FicheProduct = () => {
+const FicheProduct = (props) => {
 
   const id = useParams().id
   const [product, setProduct] = useState({ images: [], category: { category_name: "" } })
@@ -31,6 +34,12 @@ const FicheProduct = () => {
           })
       })
   }, [])
+
+  const addProductToCart = () => {
+    let item = {product_id: product.product_id, price: newPrice}
+    props.addToCart(item)
+    toastr.success('Product added to Cart')
+  }
 
   return (
     <div>
@@ -92,7 +101,9 @@ const FicheProduct = () => {
                   <div class="product__details__cart__option">
                     <div class="quantity">
                     </div>
-                    <a href="#" class="primary-btn">add to cart</a>
+                    {
+                      (product.stock != 0) ? (<a onClick={addProductToCart} href="#" class="primary-btn">add to cart</a>) : (<p>out of stock</p>)
+                    }
                   </div>
                   <div class="product__details__last__option">
                     <ul>
@@ -154,7 +165,7 @@ const FicheProduct = () => {
           <div class="row">
             {
               relatedProduct.map(product => (
-                <Product data={product}/>
+                <Product data={product} />
               ))
             }
           </div>
@@ -165,4 +176,8 @@ const FicheProduct = () => {
   )
 }
 
-export default FicheProduct
+const mapStateToProps = (state) => ({})
+
+const mapDispatchToProps = {addToCart}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FicheProduct)

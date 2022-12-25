@@ -7,8 +7,9 @@ import 'toastr/build/toastr.css'
 import { isAuthenticated, logout } from '../../helpers'
 import profil from "../../assets/img/icon/me.png"
 import panier from "../../assets/img/icon/cart.png"
+import { connect } from 'react-redux'
 
-const Navbar = () => {
+const Navbar = (props) => {
     const navigate = useNavigate()
 
     const signout = () => {
@@ -21,6 +22,13 @@ const Navbar = () => {
                 navigate('/home')
             })
     }
+
+    const { products } = props
+    let total = 0
+    products.forEach(product => {
+        total += product.price * product.count
+    })
+
     return (
         <header className="header">
             <div className="header__top">
@@ -52,8 +60,8 @@ const Navbar = () => {
                     <div className="col-lg-3 col-md-3">
                         <div className="header__nav__option">
                             <Link to="/profil"><img src={profil} width="25px" alt="" /></Link>
-                            <Link to="/cart"><img src={panier} alt="" /> <span style={{ marginLeft: '6px', marginTop: '-18px', padding: '3px', backgroundColor: 'rgb(244, 201, 201)', borderRadius: '50%' }}>110</span></Link>
-                            <div className="price">$0.00</div>
+                            <Link to="/cart"><img src={panier} alt="" /> <span style={{ marginLeft: '6px', marginTop: '-18px', padding: '3px', backgroundColor: 'rgb(244, 201, 201)', borderRadius: '50%' }}> {products.length} </span></Link>
+                            <div className="price">{total} MAD</div>
                         </div>
                     </div>
                 </div>
@@ -63,4 +71,10 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+const mapStateToProps = (state) => ({
+    products: state.cart.products
+})
+
+const mapDispatchToProps = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar)

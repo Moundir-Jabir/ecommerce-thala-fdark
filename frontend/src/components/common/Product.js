@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { hostname } from '../../config'
 
 const Product = (props) => {
-    const { product_id, images, name, price } = props.data
+    const { product_id, images, name, price, stock } = props.data
     return (
         <div className="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
             <div className="product__item">
@@ -14,7 +14,6 @@ const Product = (props) => {
                 </div>
                 <div className="product__item__text">
                     <h6>{name}</h6>
-                    <a href="#" className="add-cart">+ Add To Cart</a>
                     <div className="rating">
                         <i className="fa fa-star-o"></i>
                     </div>
