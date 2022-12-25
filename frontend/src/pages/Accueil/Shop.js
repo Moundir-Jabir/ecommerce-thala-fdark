@@ -16,7 +16,7 @@ const Shop = () => {
     price: [0, 100000]
   })
   const [skip, setSkip] = useState(0)
-  const [limit, setLimit] = useState(12)
+  const [limit, setLimit] = useState(8)
   const [products, setProducts] = useState([])
 
   const getCategories = () => {
@@ -44,7 +44,7 @@ const Shop = () => {
   const loadMore = () => {
     setSkip(skip + limit)
     getFilterProducts(filters, skip + limit, limit)
-      .then(res => setProducts([...products, ...res.data.products]))
+      .then(res => setProducts([...products, ...res.data]))
   }
 
   return (
@@ -82,9 +82,12 @@ const Shop = () => {
             <div class="col-lg-9">
               <div class="row">
                 {
-                  products.length != 0 ? products.map(product => (<Product data={product}/>)) : null
+                  products.length != 0 ? products.map(product => (<Product data={product} />)) : null
                 }
               </div>
+              {
+                (skip + limit) <= products.length ? (<button style={{ width: "130px", margin: "30px" }} onClick={loadMore} className='btn btn-success'>Load More</button>) : null
+              }
             </div>
           </div>
         </div>
