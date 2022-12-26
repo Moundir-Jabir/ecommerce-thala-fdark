@@ -109,7 +109,7 @@ exports.updateProduct = async (req, res) => {
 };
 
 exports.showAllProducts = async (req, res) => {
-  const limit = req.query.limit || 4;
+  const limit = req.query.limit || 1000;
   const offset = req.query.offset || 0;
   const orderby = req.query.orderby || "createdAt";
   const value = req.query.value || "DESC";
