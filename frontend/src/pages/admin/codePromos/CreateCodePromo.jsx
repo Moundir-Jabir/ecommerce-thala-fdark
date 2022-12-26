@@ -18,7 +18,7 @@ function CreateCodePromo() {
 
 
   useEffect(() => {
-    api.get('/product', { headers: { Authorization: `Bearer ${token}` } })
+    api.post('/product/all', { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
              setData(response.data)
         })
